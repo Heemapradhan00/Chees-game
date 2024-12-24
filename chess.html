@@ -69,6 +69,22 @@
             ['♖', '♘', '♗', '♕', '♔', '♗', '♘', '♖']
         ];
         
+        function placePieces() {
+            for (let row = 0; row < 8; row++) {
+                for (let col = 0; col < 8; col++) {
+                    const square = board.children[row * 8 + col];
+                    if (initialSetup[row][col]) {
+                        const piece = document.createElement('span');
+                        piece.className = 'piece';
+                        piece.textContent = initialSetup[row][col];
+                        square.appendChild(piece);
+                    }
+                }
+            }
+        }
+        
+        placePieces();
+        
     </script>
 </body>
 </html>
