@@ -48,6 +48,15 @@
     <script>
         const board = document.querySelector('.chess-board');
         
+        function createSquares() {
+            for (let row = 0; row < 8; row++) {
+                for (let col = 0; col < 8; col++) {
+                    const square = document.createElement('div');
+                    square.className = (row + col) % 2 === 0 ? 'white' : 'black';
+                    board.appendChild(square);
+                }
+            }
+        }
         
     </script>
 </body>
