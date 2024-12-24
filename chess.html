@@ -85,6 +85,37 @@
         
         placePieces();
         
+        let selectedPiece = null;
+
+function enableDragAndDrop() {
+    const pieces = document.querySelectorAll('.piece');
+
+    pieces.forEach(piece => {
+        piece.draggable = true;
+
+        piece.addEventListener('dragstart', (e) => {
+            selectedPiece = e.target;
+        });
+
+        piece.addEventListener('dragend', () => {
+            selectedPiece = null;
+        });
+    });
+
+    const squares = document.querySelectorAll('.chess-board div');
+    squares.forEach(square => {
+        square.addEventListener('dragover', (e) => e.preventDefault());
+
+        square.addEventListener('drop', () => {
+            if (selectedPiece && !square.firstChild) {
+                square.appendChild(selectedPiece);
+            }
+        });
+    });
+}
+
+enableDragAndDrop();
+
     </script>
 </body>
 </html>
